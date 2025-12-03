@@ -9,8 +9,8 @@ import {
   Alert,
   KeyboardAvoidingView,
   Platform,
-  SafeAreaView,
 } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { useAuth } from '../hooks/useAuth';
 import { useThemedStyles } from '../hooks/useThemedStyles';
 import { useTheme } from '../context/ThemeContext';

@@ -1,6 +1,7 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
+import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useTheme } from '../context/ThemeContext';
 import DashboardScreen from '../screens/DashboardScreen';
 import ContactsScreen from '../screens/ContactsScreen';
@@ -12,6 +13,7 @@ const Tab = createBottomTabNavigator();
 
 export default function MainTabNavigator() {
   const { colors, theme } = useTheme();
+  const insets = useSafeAreaInsets();
 
   return (
     <Tab.Navigator
@@ -23,9 +25,9 @@ export default function MainTabNavigator() {
           backgroundColor: colors.tabBarBackground,
           borderTopWidth: 1,
           borderTopColor: colors.tabBarBorder,
-          paddingTop: 6,
-          paddingBottom: 6,
-          height: 80,
+          paddingTop: 8,
+          paddingBottom: insets.bottom,
+          height: 56 + insets.bottom,
           shadowColor: theme === 'light' ? '#000' : 'transparent',
           shadowOffset: { width: 0, height: -2 },
           shadowOpacity: 0.1,

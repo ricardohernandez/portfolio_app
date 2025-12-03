@@ -3,7 +3,6 @@ import {
   View,
   Text,
   StyleSheet,
-  SafeAreaView,
   ScrollView,
 } from 'react-native';
 import { useAuth } from '../hooks/useAuth';
@@ -17,9 +16,9 @@ export default function DashboardScreen({ navigation }) {
   const styles = useThemedStyles(createStyles);
 
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       <Navbar title="Dashboard" />
-      <ScrollView contentContainerStyle={styles.scrollContent}>
+      <ScrollView style={{ flex: 1 }} contentContainerStyle={styles.scrollContent}>
 
         {/* Welcome Section */}
         <View style={styles.welcomeContainer}>
@@ -67,7 +66,7 @@ export default function DashboardScreen({ navigation }) {
           </View>
         </View>
       </ScrollView>
-    </SafeAreaView>
+    </View>
   );
 }
 
@@ -77,7 +76,10 @@ const createStyles = (colors) => StyleSheet.create({
     backgroundColor: colors.background,
   },
   scrollContent: {
-    padding: 20,
+    paddingHorizontal: 20,
+    paddingTop: 16,
+    paddingBottom: 20,
+    flexGrow: 1,
   },
   welcomeContainer: {
     backgroundColor: colors.cardBackground,

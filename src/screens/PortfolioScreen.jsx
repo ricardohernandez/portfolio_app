@@ -3,7 +3,6 @@ import {
   View,
   Text,
   StyleSheet,
-  SafeAreaView,
   ScrollView,
 } from 'react-native';
 import { useThemedStyles } from '../hooks/useThemedStyles';
@@ -14,9 +13,9 @@ export default function PortfolioScreen() {
   const { colors } = useTheme();
   const styles = useThemedStyles(createStyles);
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       <Navbar title="Portfolio" />
-      <ScrollView contentContainerStyle={styles.scrollContent}>
+      <ScrollView style={{ flex: 1 }} contentContainerStyle={styles.scrollContent}>
 
         <View style={styles.emptyState}>
           <Text style={styles.emptyIcon}>💼</Text>
@@ -26,7 +25,7 @@ export default function PortfolioScreen() {
           </Text>
         </View>
       </ScrollView>
-    </SafeAreaView>
+    </View>
   );
 }
 
@@ -36,7 +35,10 @@ const createStyles = (colors) => StyleSheet.create({
     backgroundColor: colors.background,
   },
   scrollContent: {
-    padding: 20,
+    paddingHorizontal: 20,
+    paddingTop: 16,
+    paddingBottom: 20,
+    flexGrow: 1,
   },
   emptyState: {
     backgroundColor: colors.cardBackground,

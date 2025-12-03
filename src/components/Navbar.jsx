@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import { useTheme } from '../context/ThemeContext';
 import { useAuth } from '../hooks/useAuth';
@@ -17,34 +18,36 @@ export default function Navbar({ title }) {
   const navbarBorderColor = theme === 'light' ? '#1e40af' : '#0f172a';
 
   return (
-    <View style={[styles.navbar, { 
-      backgroundColor: navbarBgColor,
-      borderBottomColor: navbarBorderColor 
-    }]}>
-      <Text style={[styles.title, { color: '#fff' }]}>{title}</Text>
-      
-      <View style={styles.actions}>
-        <TouchableOpacity 
-          onPress={toggleTheme}
-          style={[styles.iconButton, { backgroundColor: 'rgba(255,255,255,0.15)' }]}
-          activeOpacity={0.7}
-        >
-          <Ionicons 
-            name={theme === 'light' ? 'moon' : 'sunny'} 
-            size={24} 
-            color="#fff" 
-          />
-        </TouchableOpacity>
+    <SafeAreaView edges={['top']} style={{ backgroundColor: navbarBgColor }}>
+      <View style={[styles.navbar, { 
+        backgroundColor: navbarBgColor,
+        borderBottomColor: navbarBorderColor,
+      }]}>
+        <Text style={[styles.title, { color: '#fff' }]}>{title}</Text>
+        
+        <View style={styles.actions}>
+          <TouchableOpacity 
+            onPress={toggleTheme}
+            style={[styles.iconButton, { backgroundColor: 'rgba(255,255,255,0.15)' }]}
+            activeOpacity={0.7}
+          >
+            <Ionicons 
+              name={theme === 'light' ? 'moon' : 'sunny'} 
+              size={24} 
+              color="#fff" 
+            />
+          </TouchableOpacity>
 
-        <TouchableOpacity 
-          onPress={handleLogout}
-          style={[styles.logoutButton, { backgroundColor: 'rgba(255,255,255,0.15)' }]}
-          activeOpacity={0.7}
-        >
-          <Ionicons name="log-out" size={24} color="#fff" />
-        </TouchableOpacity>
+          <TouchableOpacity 
+            onPress={handleLogout}
+            style={[styles.logoutButton, { backgroundColor: 'rgba(255,255,255,0.15)' }]}
+            activeOpacity={0.7}
+          >
+            <Ionicons name="log-out" size={24} color="#fff" />
+          </TouchableOpacity>
+        </View>
       </View>
-    </View>
+    </SafeAreaView>
   );
 }
 
