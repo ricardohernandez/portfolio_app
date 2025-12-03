@@ -31,9 +31,22 @@ export const AuthProvider = ({ children }) => {
       setUser(userData);
       return { success: true };
     } catch (error) {
+      console.error('🔴 Login Error in AuthContext:', {
+        message: error.message,
+        status: error.response?.status,
+        apiError: error.response?.data?.message,
+        fullError: error.response?.data,
+      });
+      
+      const errorMessage = 
+        error.response?.data?.message || 
+        error.response?.data?.error ||
+        error.message || 
+        'Error al iniciar sesión';
+      
       return {
         success: false,
-        error: error.response?.data?.message || 'Error al iniciar sesión'
+        error: errorMessage
       };
     }
   };

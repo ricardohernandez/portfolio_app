@@ -34,7 +34,17 @@ export default function LoginScreen() {
     setLoading(false);
 
     if (!result.success) {
-      Alert.alert('Error', result.error);
+      // Mostrar error detallado
+      const errorMessage = result.error || 'Error desconocido';
+      console.error('🔴 Login Error:', {
+        error: errorMessage,
+        fullError: result,
+      });
+      Alert.alert(
+        'Error al iniciar sesión',
+        errorMessage,
+        [{ text: 'OK' }]
+      );
     }
   };
 
