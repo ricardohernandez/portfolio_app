@@ -2,14 +2,14 @@ import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Platform } from 'react-native';
 
-// Backend remoto en Railway
-const REMOTE_API_URL = 'https://porfolioapi-production-f3eb.up.railway.app/api';
+// Backend remoto en Render
+const REMOTE_API_URL = 'https://porfolio-api-56mv.onrender.com/api';
 
 // Detectar si está en navegador (web) o en móvil (app)
 const isWeb = Platform.OS === 'web';
 
 // En web (Expo web), usar localhost
-// En móvil, usar el backend remoto de Railway
+// En móvil, usar el backend remoto de Render
 const API_URL = isWeb 
   ? 'http://localhost:5001/api'
   : REMOTE_API_URL;
