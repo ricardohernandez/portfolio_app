@@ -2,14 +2,14 @@ import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Platform } from 'react-native';
 
-// Backend remoto en Render
-const REMOTE_API_URL = 'https://porfolio-api-56mv.onrender.com/api';
+// Backend remoto en Vercel
+const REMOTE_API_URL = 'https://porfolio-api-seven.vercel.app/api';
 
 // Detectar si está en navegador (web) o en móvil (app)
 const isWeb = Platform.OS === 'web';
 
 // En web (Expo web), usar localhost
-// En móvil, usar el backend remoto de Render
+// En móvil, usar el backend remoto de Vercel
 const API_URL = isWeb 
   ? 'http://localhost:5001/api'
   : REMOTE_API_URL;
